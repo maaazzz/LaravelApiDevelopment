@@ -7,6 +7,8 @@ use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\map;
+
 class EmployeeController extends Controller
 {
     /**
@@ -16,8 +18,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $query = Employee::all();
-        return response()->json($query);
+        $employees = Employee::latest('id')->get();
+        return response()->json([
+            'status' => 1,
+            'message' => "Listing Employees",
+            'data' => $employees,
+        ], 200);
     }
 
     /**
@@ -43,9 +49,9 @@ class EmployeeController extends Controller
 
         // return response
         return response()->json([
-            'status' => 200,
+            'status' => 1,
             'message' => 'Employee Created Successfully',
-        ]);
+        ], 200);
     }
 
     /**
@@ -56,7 +62,11 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return response()->json([
+            'status' => 1,
+            'message' => 'Emplyee Result',
+            'data' => $employee,
+        ]);
     }
 
     /**

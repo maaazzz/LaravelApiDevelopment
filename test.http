@@ -1,3 +1,4 @@
+# store employee
 # POST http://127.0.0.1:8080/api/employees HTTP/1.1 Content-Type: application/json Accept: application/json
 
 # {
@@ -7,3 +8,13 @@
 #     "gender" : "male",
 #     "age" : "24"
 # }
+
+
+# listing of employees
+# GET http://127.0.0.1:8000/api/employees HTTP/1.1 Content-Type: application/json Accept: application/json
+
+# get single employee
+# GET http://127.0.0.1:8000/api/employees/2 HTTP/1.1 Content-Type: application/json Accept: application/json
+
+# delete an employee
+GET http://127.0.0.1:8000/api/employees/2 HTTP/1.1 Content-Type: application/json Accept: application/json
