@@ -1,0 +1,9 @@
+# POST http://127.0.0.1:8080/api/employees HTTP/1.1 Content-Type: application/json Accept: application/json
+
+# {
+#     "name": "Maaz",
+#     "email": "maazktk588@gmail.com",
+#     "phone_no": "12312",
+#     "gender" : "male",
+#     "age" : "24"
+# }
