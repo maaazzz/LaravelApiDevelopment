@@ -62,10 +62,12 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
+        // if (Employee::where('id', $employee->id)->exists()) {
+        $employee_detail = Employee::where('id', $employee->id)->firstOrFail();
         return response()->json([
             'status' => 1,
             'message' => 'Emplyee Result',
-            'data' => $employee,
+            'data' => $employee_detail,
         ]);
     }
 
@@ -87,9 +89,19 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->name = !empty(request('name')) ? request('name') : $employee->name;
+        $employee->email = !empty(request('email')) ? request('email') : $employee->email;
+        $employee->phone_no = !empty(request('phone_no')) ? request('phone_no') : $employee->phone_no;
+        $employee->gender = !empty(request('gender')) ? request('gender') : $employee->gender;
+        $employee->age = !empty(request('age')) ? request('age') : $employee->age;
+
+        $employee->update();
+        return response()->json([
+            'status' => 1,
+            'message' => "Employee Updated",
+        ], 200);
     }
 
     /**
@@ -100,6 +112,10 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return response()->json([
+            'status' => 1,
+            'message' => 'Employee Deleted Successfully',
+        ]);
     }
 }

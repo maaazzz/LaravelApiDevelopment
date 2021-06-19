@@ -17,4 +17,14 @@
 # GET http://127.0.0.1:8000/api/employees/2 HTTP/1.1 Content-Type: application/json Accept: application/json
 
 # delete an employee
-GET http://127.0.0.1:8000/api/employees/2 HTTP/1.1 Content-Type: application/json Accept: application/json
+# GET http://127.0.0.1:8000/api/employees/3 HTTP/1.1 Content-Type: application/json Accept: application/json
+
+# update employee
+POST http://127.0.0.1:8080/api/employees/2 HTTP/1.1 Content-Type: application/json
+{
+     "name": "Trustech",
+     "email": "trustech@gmail.com",
+     "phone_no": "23",
+     "gender" : "male",
+     "age" : "234"
+}
